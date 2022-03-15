@@ -9,7 +9,7 @@ class Ui(QtWidgets.QMainWindow):
         
         self.addButton.clicked.connect(self.add)
         self.doneButton.clicked.connect(self.done)
-        self.doneButton.clicked.connect(self.clear)
+        self.clearButton.clicked.connect(self.clear)
         
     def add(self):    
         
@@ -26,7 +26,7 @@ class Ui(QtWidgets.QMainWindow):
         
         
     def clear(self):
-            
+        self.jobslistWidget.clear()  
         
         
 app = QtWidgets.QApplication(sys.argv)

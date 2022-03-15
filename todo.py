@@ -11,7 +11,13 @@ class Ui(QtWidgets.QMainWindow):
         self.addButton.clicked.connect(self.add)
         
     def add(self):    
-        print("Add Clicked")
+        
+        if self.joblineEdit.text():
+            strjob = self.joblineEdit.text()
+            self.jobslistWidget.addItem(strjob)
+            self.joblineEdit.setText("")
+            self.joblineEdit.setFocus()
+
         
 app = QtWidgets.QApplication(sys.argv)
 window = Ui()

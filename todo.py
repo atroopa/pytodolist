@@ -1,4 +1,3 @@
-from curses import window
 from PyQt5 import QtWidgets, uic
 import sys
 
@@ -9,6 +8,8 @@ class Ui(QtWidgets.QMainWindow):
         self.show()
         
         self.addButton.clicked.connect(self.add)
+        self.doneButton.clicked.connect(self.done)
+        self.doneButton.clicked.connect(self.clear)
         
     def add(self):    
         
@@ -18,6 +19,15 @@ class Ui(QtWidgets.QMainWindow):
             self.joblineEdit.setText("")
             self.joblineEdit.setFocus()
 
+    def done(self):    
+        
+        clickedIndex = self.jobslistWidget.currentRow()
+        self.jobslistWidget.takeItem(clickedIndex)
+        
+        
+    def clear(self):
+            
+        
         
 app = QtWidgets.QApplication(sys.argv)
 window = Ui()

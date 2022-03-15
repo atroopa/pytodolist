@@ -1837,7 +1837,7 @@
      <string>clear</string>
     </property>
    </widget>
-   <widget class="QListWidget" name="listWidget">
+   <widget class="QListWidget" name="jobslistWidget">
     <property name="geometry">
      <rect>
       <x>20</x>

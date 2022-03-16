@@ -771,6 +771,10 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+        self.addButton.clicked.connect(self.add)
+        self.doneButton.clicked.connect(self.done)
+        self.clearButton.clicked.connect(self.clear)
+        
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -778,7 +782,20 @@ class Ui_MainWindow(object):
         self.doneButton.setText(_translate("MainWindow", "done"))
         self.clearButton.setText(_translate("MainWindow", "clear"))
 
-
+    def add(self):
+        if self.joblineEdit:
+            jobstr = self.joblineEdit.text()
+            self.jobslistWidget.addItem(jobstr)
+            self.joblineEdit.setText("")
+            self.joblineEdit.setFocus()
+    
+    def done(self):
+        clickedIndex = self.jobslistWidget.currentRow()
+        self.jobslistWidget.takeItem(clickedIndex)
+    
+    def clear(self):
+        self.jobslistWidget.clear()
+    
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
